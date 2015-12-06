@@ -14,6 +14,5 @@ spider.use(function(page, spider, next) {
     next();
 });
 spider.addUrl('http://www.fotocasa.es/alquiler/garajes/barcelona-provincia/listado-por-foto/');
-spider.start();
-//
+spider.crawl();
 
