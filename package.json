@@ -1,0 +1,23 @@
+{
+  "name": "mrspider-parking-example",
+  "version": "1.0.0",
+  "description": "an example scrape done with the new middleware mrspider",
+  "main": "index.js",
+  "dependencies": {
+    "mrspider": "*",
+    "mrspider-cheerio": "0.0.2",
+    "mrspider-css-links": "0.0.2",
+    "mrspider-request": "0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mrspider",
+    "crawling",
+    "example"
+  ],
+  "author": "Sean Hayes <seanowenhayes@gmail.com>",
+  "license": "ISC"
+}
