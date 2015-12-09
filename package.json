@@ -4,8 +4,9 @@
   "description": "an example scrape done with the new middleware mrspider",
   "main": "index.js",
   "dependencies": {
-    "mrspider": "^3.1.2",
+    "mrspider": "^3.2.2",
     "mrspider-cheerio": "0.0.2",
+    "mrspider-css-data-extractor": "0.0.1",
     "mrspider-css-links": "0.0.2",
     "mrspider-request": "0.0.2"
   },
