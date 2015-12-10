@@ -12,7 +12,11 @@ const LINKS_RULE = '.pagination-next a, .property-location';
 spider.use(mrspiderRequest);
 spider.use(mrspiderCheerio);
 spider.use(mrspiderCssLinks(LINKS_RULE));
-spider.use(mrspiderCssData({title: 'h1.property-title'}));
+spider.use(mrspiderCssData({
+    title: 'h1.property-title',
+    price: '.basic-info--contact_price',
+    detail: '.detail-section-content'
+}));
 spider.use(function(page, spider, next) {
     console.log(page.url);
     console.log(page.data);
