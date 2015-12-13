@@ -18,18 +18,18 @@ spider.use(mrspiderCssData({
     detail: '.adCommentsLanguage'
 }));
 spider.use(mrspiderCssImage({
-    images: '#main-multimedia img'
-}));
+    images: 'meta[name="og:image"]'
+}, 'content'));
 
-spider.use(function(page, spider, next) {
+spider.use(function (page, spider, next) {
     console.log(page.url);
-        console.log(page.data);
+    console.log(page.data);
     next();
 });
 
 spider.addUrl('http://www.idealista.com/en/alquiler-garajes/barcelona-provincia/');
 spider.crawl();
 
-process.on('exit', function() {
+process.on('exit', function () {
     //console.log(spider.urls);
 });
