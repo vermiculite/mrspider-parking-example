@@ -9,23 +9,30 @@ var regexDataExtractor = require('mrspider-regex-data-extractor');
 var spider = require('mrspider')({
     baseUrl: 'http://www.fotocasa.es'
 });
+
 const LINKS_RULE = '.pagination-next a, .property-location';
 
 spider.use(mrspiderRequest);
+
 spider.use(mrspiderCheerio);
+
 spider.use(mrspiderCssLinks(LINKS_RULE));
+
 spider.use(mrspiderCssData({
     title: 'h1.property-title',
     price: '.basic-info--contact_price',
     detail: '.detail-section-content'
 }));
+
 spider.use(mrspiderCssImage({
     images: 'li.carousel_slide > img'
 }));
+
 spider.use(regexDataExtractor({
     lat: /Lat": "(\d+\.\d+)/,
     lng: /Lng": "(\d+\.\d+)/
-}))
+}));
+
 spider.use(function(page, spider, next) {
     console.log(page.url);
     console.log(page.data);

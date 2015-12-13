@@ -21,6 +21,11 @@ spider.use(mrspiderCssImage({
     images: 'meta[name="og:image"]'
 }, 'content'));
 
+spider.use(regexDataExtractor({
+    lat: /latitude:"(\d+\.\d+)/,
+    lng: /longitude:"(\d+\.\d+)/
+}));
+
 spider.use(function (page, spider, next) {
     console.log(page.url);
     console.log(page.data);
