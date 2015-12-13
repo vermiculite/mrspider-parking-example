@@ -5,6 +5,7 @@ var mrspiderCheerio = require('mrspider-cheerio');
 var mrspiderCssLinks = require('mrspider-css-links');
 var mrspiderCssData = require('mrspider-css-data-extractor');
 var mrspiderCssImage = require('mrspider-css-image-extraction');
+var regexDataExtractor = require('mrspider-regex-data-extractor');
 var spider = require('mrspider')({
     baseUrl: 'http://www.fotocasa.es'
 });
@@ -21,6 +22,10 @@ spider.use(mrspiderCssData({
 spider.use(mrspiderCssImage({
     images: 'li.carousel_slide > img'
 }));
+spider.use(regexDataExtractor({
+    lat: /Lat": "(\d+\.\d+)/,
+    lng: /Lng": "(\d+\.\d+)/
+}))
 spider.use(function(page, spider, next) {
     console.log(page.url);
     console.log(page.data);

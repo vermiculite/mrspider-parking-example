@@ -9,6 +9,7 @@
     "mrspider-css-data-extractor": "0.0.1",
     "mrspider-css-image-extraction": "*",
     "mrspider-css-links": "0.0.2",
+    "mrspider-regex-data-extractor": "0.0.1",
     "mrspider-request": "0.0.2"
   },
   "devDependencies": {},
