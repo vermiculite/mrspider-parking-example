@@ -4,6 +4,7 @@ var mrspiderRequest = require('mrspider-request');
 var mrspiderCheerio = require('mrspider-cheerio');
 var mrspiderCssLinks = require('mrspider-css-links');
 var mrspiderCssData = require('mrspider-css-data-extractor');
+var mrspiderCssImage = require('mrspider-css-image-extraction');
 var spider = require('mrspider')({
     baseUrl: 'http://www.fotocasa.es'
 });
@@ -16,6 +17,9 @@ spider.use(mrspiderCssData({
     title: 'h1.property-title',
     price: '.basic-info--contact_price',
     detail: '.detail-section-content'
+}));
+spider.use(mrspiderCssImage({
+    images: 'li.carousel_slide > img'
 }));
 spider.use(function(page, spider, next) {
     console.log(page.url);
