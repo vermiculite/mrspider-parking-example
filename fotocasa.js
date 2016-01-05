@@ -36,6 +36,10 @@ spider.use(regexDataExtractor({
 }));
 
 spider.use(mrspiderValidator({
+    url: {
+        type: 'string',
+        required: true
+    },
     title: {
         type: 'string',
         required: true
