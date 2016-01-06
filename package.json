@@ -12,7 +12,7 @@
     "mrspider-jsdom": "0.0.1",
     "mrspider-mongodb-persister": "0.0.2",
     "mrspider-regex-data-extractor": "0.0.2",
-    "mrspider-request": "0.0.2",
+    "mrspider-request": "^1.0.0",
     "mrspider-validator": "0.0.1"
   },
   "devDependencies": {},

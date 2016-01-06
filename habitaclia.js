@@ -1,6 +1,8 @@
 "use strict";
 
-var mrspiderRequest = require('mrspider-request');
+var mrspiderRequest = require('mrspider-request')({
+    encoding: 'binary'
+});
 var mrspiderJsdom = require('mrspider-jsdom')();
 var mrspiderCssLinks = require('mrspider-css-links');
 var mrspiderCssData = require('mrspider-css-data-extractor');
