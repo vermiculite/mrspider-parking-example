@@ -1,9 +1,10 @@
 "use strict";
+let through2 = require('through2');
 
 var mrspiderRequest = require('mrspider-request')({
     encoding: 'binary'
 });
-var mrspiderJsdom = require('mrspider-jsdom')();
+var mrspiderCheerio = require('mrspider-cheerio');
 var mrspiderCssLinks = require('mrspider-css-links');
 var mrspiderCssData = require('mrspider-css-data-extractor');
 var mrspiderCssImage = require('mrspider-css-image-extraction');
@@ -14,39 +15,27 @@ var spider = require('mrspider')({
     baseUrl: 'http://www.habitaclia.com'
 });
 
-spider.use(mrspiderRequest);
-
-spider.use(mrspiderJsdom);
-
-spider.use(mrspiderCssLinks('.paginacionlista a:last-child, h3 a'));
-
-spider.use(mrspiderCssData({
-    title: 'title',
-    price: '#opciones-top li.precio',
-    detail: 'div[itemprop=description]'
-}));
-
-spider.use(mrspiderCssImage({
-    images: 'img[itemprop=image]'
-}));
-
-spider.use(regexDataExtractor({
-    lat: /Lat: parseFloat\((\d+\.\d+)/,
-    lng: /Lon: parseFloat\((\d+\.\d+)/
-}));
-
-persistence(spider);
-
-spider.use(function (page, spider, next) {
-    console.log(page.url);
-    console.log(page.data);
-    next();
-});
 
 spider.addUrl('http://www.habitaclia.com/alquiler-aparcamientos-barcelona.htm');
 
-spider.crawl();
-
-process.on('exit', function () {
-    //console.log(spider.urls);
-});
+spider.createReadStream()
+    .pipe(mrspiderRequest)
+    .pipe(mrspiderCheerio)
+    .pipe(mrspiderCssLinks('.paginacionlista a:last-child, h3 a'))
+    .pipe(mrspiderCssData({
+        title: 'title',
+        price: '#opciones-top li.precio',
+        detail: 'div[itemprop=description]'
+    }))
+    .pipe(mrspiderCssImage({
+        images: 'img[itemprop=image]'
+    })).pipe(regexDataExtractor({
+        lat: /Lat: parseFloat\((\d+\.\d+)/,
+        lng: /Lon: parseFloat\((\d+\.\d+)/
+    }))
+    .pipe(persistence())
+    .pipe(through2.obj(function(page, encoding, next) {
+        console.log(page.url);
+        console.log(page.data);
+        next();
+    }));

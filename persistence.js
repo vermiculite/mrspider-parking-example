@@ -1,8 +1,8 @@
 var mrspiderValidator = require('mrspider-validator');
 var mongodbPersister = require('mrspider-mongodb-persister');
 
-module.exports = function(spider) {
-    spider.use(mrspiderValidator({
+module.exports = function() {
+    return mrspiderValidator({
         url: {
             type: 'string',
             required: true
@@ -27,10 +27,8 @@ module.exports = function(spider) {
         lng: {
             type: 'number'
         }
-    }));
-
-    spider.use(mongodbPersister({
-        url: 'mongodb://localhost:27017/parking',
+    }).pipe(mongodbPersister({
+        url: `mongodb://${process.env.IP}:27017/parking`,
         collection: 'results'
     }));
 
