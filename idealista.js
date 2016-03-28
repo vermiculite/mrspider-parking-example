@@ -2,17 +2,19 @@
 
 let through2 = require('through2');
 
-var mrspiderRequest = require('mrspider-request')();
-var mrspiderCheerio = require('mrspider-cheerio');
-var mrspiderCssLinks = require('mrspider-css-links');
-var mrspiderCssData = require('mrspider-css-data-extractor');
-var mrspiderCssImage = require('mrspider-css-image-extraction');
-var persistence = require('./persistence');
-var regexDataExtractor = require('mrspider-regex-data-extractor');
-
-var spider = require('mrspider')({
+var mr = require('mrspider');
+let spider = mr.Spider({
     baseUrl: 'http://www.idealista.com'
 });
+
+let mrspiderRequest = mr.request();
+let mrspiderCheerio = mr.cheerio;
+let mrspiderJsdom = mr.jsdom();
+let mrspiderCssLinks = mr.cssLinks;
+let mrspiderCssData = mr.cssDataExtractor;
+let mrspiderCssImage = mr.cssImageExtraction;
+let persistence = require('./persistence');
+let regexDataExtractor = mr.regexDataExtractor;
 
 spider.addUrl('http://www.idealista.com/en/alquiler-garajes/barcelona-provincia/');
 
