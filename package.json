@@ -4,16 +4,7 @@
   "description": "an example scrape done with the new middleware mrspider",
   "main": "index.js",
   "dependencies": {
-    "mrspider": "*",
-    "mrspider-cheerio": "*",
-    "mrspider-css-data-extractor": "*",
-    "mrspider-css-image-extraction": "*",
-    "mrspider-css-links": "*",
-    "mrspider-jsdom": "*",
-    "mrspider-mongodb-persister": "*",
-    "mrspider-regex-data-extractor": "*",
-    "mrspider-request": "*",
-    "mrspider-validator": "*",
+    "mrspider": "^5.1.2",
     "through2": "*"
   },
   "devDependencies": {},

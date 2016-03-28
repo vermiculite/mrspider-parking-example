@@ -1,5 +1,8 @@
-var mrspiderValidator = require('mrspider-validator');
-var mongodbPersister = require('mrspider-mongodb-persister');
+"use strict";
+
+let mr = require('mrspider');
+let mrspiderValidator = mr.validator;
+let mongodbPersister = mr.mongoDbPersister;
 
 module.exports = function() {
     return mrspiderValidator({
