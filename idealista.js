@@ -24,7 +24,8 @@ spider.createReadStream()
         title: 'title',
         price: '#main-info > div.info-data > span > span.txt-big.txt-bold',
         detail: '.adCommentsLanguage'
-    })).pipe(mrspiderCssImage({
+    }))
+    .pipe(mrspiderCssImage({
         images: 'meta[name="og:image"]'
     }, 'content'))
     .pipe(regexDataExtractor({
