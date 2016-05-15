@@ -25,7 +25,7 @@ spider.addUrl('http://www.fotocasa.es/alquiler/garajes/barcelona-provincia/lista
 
 spider.createReadStream()
     .pipe(mrspiderRequest)
-    .pipe(mrspiderJsdom)
+    .pipe(mrspiderCheerio)
     .pipe(mrspiderCssLinks(LINKS_RULE))
     .pipe(mrspiderCssImage({
         images: 'li.carousel_slide > img'

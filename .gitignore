@@ -1,2 +1,6 @@
 .idea
 node_modules
+data
+mongod
+scrapy
+.c9
